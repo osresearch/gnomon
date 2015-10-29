@@ -3,7 +3,7 @@
  */
 
 
-%color("red") cube([200,200,1], center=true);
+//%color("red") cube([200,200,1], center=true);
 
 
 module project(pos, a1)
@@ -104,6 +104,8 @@ module project_digit(d)
 
 colors=["red","green","blue","yellow","cyan","purple","white","black","gray"];
 
+module gnomon()
+{
 translate([0,0,-250]) 
 difference()
 {
@@ -122,6 +124,11 @@ difference()
 	// and back-project each of the digits
 	for(d=[0:9])
 	{
-		color(colors[d]) project_digit(d);
+		//color(colors[d])
+		project_digit(d);
 	}
 }
+}
+
+
+rotate([0,sin($t*360+90)*30,180]) gnomon();
